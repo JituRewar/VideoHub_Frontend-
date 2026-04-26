@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { secureUrl } from "../utils/secureUrl";
 import { API } from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import { FiVideo, FiEye, FiUsers, FiThumbsUp, FiTrendingUp } from "react-icons/fi";
@@ -160,7 +161,7 @@ function Dashboard() {
                 >
                   <div className="relative w-32 h-20 shrink-0 rounded-lg overflow-hidden bg-gray-100">
                     <img
-                      src={video.thumbnail}
+                      src={secureUrl(video.thumbnail)}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       alt={video.title}
                     />

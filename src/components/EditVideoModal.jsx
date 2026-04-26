@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { secureUrl } from "../utils/secureUrl";
 import { API } from "../api/axios"
 
 function EditVideoModal({ video, onClose, onUpdate }) {
@@ -68,7 +69,7 @@ function EditVideoModal({ video, onClose, onUpdate }) {
         {/* THUMBNAIL PREVIEW */}
         {preview && (
           <img
-            src={preview}
+            src={secureUrl(preview)}
             alt="thumbnail preview"
             className="w-full h-40 object-cover rounded"
           />

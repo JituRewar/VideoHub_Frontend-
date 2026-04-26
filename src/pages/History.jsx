@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { secureUrl } from "../utils/secureUrl";
 import { API } from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import { FiClock, FiTrash2, FiSearch, FiLoader } from "react-icons/fi";
@@ -65,7 +66,7 @@ function History() {
               >
                 <div className="relative w-full sm:w-48 xl:w-64 aspect-video rounded-xl overflow-hidden bg-gray-200 shrink-0">
                   <img
-                    src={v.thumbnail}
+                    src={secureUrl(v.thumbnail)}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     alt={v.title}
                   />

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { secureUrl } from "../utils/secureUrl";
 
 function VideoCard({ video }) {
   const navigate = useNavigate()
@@ -10,13 +11,13 @@ function VideoCard({ video }) {
   hover:scale-105 transition duration-300"
 >
   <img
-    src={video.thumbnail}
+    src={secureUrl(video.thumbnail)}
     className="w-full h-40 object-cover rounded-lg"
   />
 
   <div className="mt-2 flex gap-3">
     <img
-      src={video.owner?.avatar}
+      src={secureUrl(video.owner?.avatar)}
       className="w-8 h-8 rounded-full"
     />
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { secureUrl } from "../utils/secureUrl";
 import { useParams, useNavigate } from "react-router-dom";
 import { API } from "../api/axios";
 import { useAuth } from "../context/AuthContext";
@@ -75,7 +76,7 @@ function Profile() {
       {/* COVER IMAGE */}
       <div className="w-full h-48 md:h-72 bg-linear-to-r from-gray-800 to-gray-900 relative rounded-b-3xl overflow-hidden shadow-sm mx-auto max-w-400">
         <img
-          src={channel.coverImage || "https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&q=80"}
+          src={secureUrl(channel.coverImage || "https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&q=80")}
           className="w-full h-full object-cover opacity-80"
           alt="Cover"
         />
@@ -89,10 +90,10 @@ function Profile() {
           {/* AVATAR */}
           <div className="relative">
             <img
-              src={
+              src={secureUrl(
                 channel.avatar ||
                 `https://ui-avatars.com/api/?name=${channel.fullName || channel.username}&size=256`
-              }
+              )}
               className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-gray-50 shadow-xl object-cover bg-white"
               alt={channel.username}
             />
@@ -180,7 +181,7 @@ function Profile() {
                   >
                     <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-200 shadow-sm mb-3">
                       <img
-                        src={video.thumbnail}
+                        src={secureUrl(video.thumbnail)}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                         alt={video.title}
                       />

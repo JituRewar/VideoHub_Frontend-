@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { secureUrl } from "../utils/secureUrl";
 import { useParams, useNavigate } from "react-router-dom";
 import { API } from "../api/axios";
 import { useAuth } from "../context/AuthContext";
@@ -185,11 +186,11 @@ function VideoPage() {
         <div className="relative w-full rounded-2xl overflow-hidden bg-black aspect-video shadow-xl ring-1 ring-gray-200/50">
           <video
             ref={videoRef}
-            src={video.videoFile}
+            src={secureUrl(video.videoFile)}
             controls
             autoPlay
             className="w-full h-full outline-none"
-            poster={video.thumbnail}
+            poster={secureUrl(video.thumbnail)}
           />
         </div>
 
@@ -203,7 +204,7 @@ function VideoPage() {
           
           <div className="flex items-center gap-4">
             <img 
-              src={video.owner?.avatar || `https://ui-avatars.com/api/?name=${video.owner?.fullName || 'User'}`} 
+              src={secureUrl(video.owner?.avatar || `https://ui-avatars.com/api/?name=${video.owner?.fullName || 'User'}`)} 
               className="w-12 h-12 rounded-full object-cover cursor-pointer hover:opacity-90" 
               onClick={() => navigate(`/c/${video.owner?.username}`)}
             />
@@ -323,7 +324,7 @@ function VideoPage() {
 
           <div className="flex gap-4 mb-8">
             <img 
-              src={user?.avatar || `https://ui-avatars.com/api/?name=${user?.fullName || 'User'}`} 
+              src={secureUrl(user?.avatar || `https://ui-avatars.com/api/?name=${user?.fullName || 'User'}`)} 
               className="w-10 h-10 rounded-full" 
             />
             <form onSubmit={addComment} className="flex-1 relative">
@@ -346,7 +347,7 @@ function VideoPage() {
           <div className="space-y-6">
             {comments.map((c) => (
               <div key={c._id} className="flex gap-4">
-                <img src={c.owner?.avatar || `https://ui-avatars.com/api/?name=${c.owner?.username || 'User'}`} className="w-10 h-10 rounded-full object-cover" />
+                <img src={secureUrl(c.owner?.avatar || `https://ui-avatars.com/api/?name=${c.owner?.username || 'User'}`)} className="w-10 h-10 rounded-full object-cover" />
                 <div className="flex-1">
                   <div className="flex items-baseline gap-2 mb-1">
                     <span className="font-bold text-sm text-gray-900">
@@ -390,7 +391,7 @@ function VideoPage() {
             >
               <div className="relative w-40 h-24 shrink-0 rounded-xl overflow-hidden bg-gray-200">
                 <img
-                  src={v.thumbnail}
+                  src={secureUrl(v.thumbnail)}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                 />
                 <div className="absolute bottom-1 right-1 bg-black/80 px-1.5 py-0.5 rounded text-white text-[10px] font-medium">

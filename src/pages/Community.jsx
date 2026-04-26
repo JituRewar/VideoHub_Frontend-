@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { secureUrl } from "../utils/secureUrl";
 import { API } from "../api/axios";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -77,10 +78,10 @@ function Community() {
         <div className="bg-white p-6 rounded-3xl shadow-[0_4px_30px_rgba(0,0,0,0.03)] border border-gray-100">
           <div className="flex gap-4">
             <img
-              src={
+              src={secureUrl(
                 user?.user?.avatar ||
                 `https://ui-avatars.com/api/?name=${user?.user?.fullName || "Creator"}&background=FF0000&color=fff`
-              }
+              )}
               className="w-12 h-12 rounded-full object-cover shadow-sm"
               alt="User"
             />
@@ -191,10 +192,10 @@ function Community() {
                   onClick={() => navigate(`/c/${t.owner?.username}`)}
                 >
                   <img
-                    src={
+                    src={secureUrl(
                       t.owner?.avatar ||
                       `https://ui-avatars.com/api/?name=${t.owner?.username || "User"}`
-                    }
+                    )}
                     className="w-12 h-12 rounded-full object-cover border border-gray-100"
                     alt={t.owner?.username}
                   />

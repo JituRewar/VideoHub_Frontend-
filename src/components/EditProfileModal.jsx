@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { secureUrl } from "../utils/secureUrl";
 import { API } from "../api/axios";
 import { FiX, FiCamera } from "react-icons/fi";
 
@@ -87,7 +88,7 @@ function EditProfileModal({ user, onClose, onUpdate }) {
         {/* COVER IMAGE */}
         <div className="relative w-full h-48 bg-linear-to-tr from-gray-800 to-gray-900 group">
           <img
-            src={coverPreview || "https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&q=80"}
+            src={secureUrl(coverPreview || "https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&q=80")}
             className="w-full h-full object-cover opacity-70 group-hover:opacity-50 transition-opacity"
             alt="Cover Preview"
           />
@@ -104,7 +105,7 @@ function EditProfileModal({ user, onClose, onUpdate }) {
           <div className="flex gap-6 items-end -mt-16 mb-8 relative z-10">
             <div className="relative group rounded-full border-4 border-white shadow-lg bg-white inline-block">
               <img
-                src={avatarPreview || `https://ui-avatars.com/api/?name=${fullName || 'User'}&size=256`}
+                src={secureUrl(avatarPreview || `https://ui-avatars.com/api/?name=${fullName || 'User'}&size=256`)}
                 className="w-32 h-32 rounded-full object-cover group-hover:opacity-60 transition-opacity"
                 alt="Avatar Settings"
               />

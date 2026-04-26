@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { secureUrl } from "../utils/secureUrl";
 import { API } from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import { FiTrash2, FiX } from "react-icons/fi";
@@ -137,7 +138,7 @@ function WatchHistory() {
                       </button>
 
                       <div className="relative w-full sm:w-70 h-40 shrink-0 rounded-xl overflow-hidden bg-gray-100">
-                        <img src={video.thumbnail} className="w-full h-full object-cover transition-transform group-hover:scale-105" alt={video.title} />
+                        <img src={secureUrl(video.thumbnail)} className="w-full h-full object-cover transition-transform group-hover:scale-105" alt={video.title} />
                         <div className="absolute bottom-2 right-2 bg-black/80 px-2 py-1 rounded text-white text-xs font-medium">
                           {Math.floor(video.duration / 60)}:{(video.duration % 60).toString().padStart(2, '0')}
                         </div>
@@ -149,7 +150,7 @@ function WatchHistory() {
                         </h3>
                         
                         <div className="flex flex-wrap items-center gap-3 mt-3">
-                          <img src={video.owner?.avatar || `https://ui-avatars.com/api/?name=${video.owner?.username || 'User'}`} className="w-6 h-6 rounded-full" />
+                          <img src={secureUrl(video.owner?.avatar || `https://ui-avatars.com/api/?name=${video.owner?.username || 'User'}`)} className="w-6 h-6 rounded-full" />
                           <span className="text-sm font-bold text-gray-700">{video.owner?.fullName || video.owner?.username}</span>
                           <span className="text-xs bg-gray-100 text-gray-600 font-bold px-2 py-0.5 rounded">4K</span>
                         </div>

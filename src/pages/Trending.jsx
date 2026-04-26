@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { secureUrl } from "../utils/secureUrl";
 import { API } from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import { FiTrendingUp, FiLoader } from "react-icons/fi";
@@ -60,7 +61,7 @@ function Trending() {
 
               <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-sm bg-gray-200 mb-3">
                 <img
-                  src={v.thumbnail}
+                  src={secureUrl(v.thumbnail)}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   alt={v.title}
                 />
@@ -72,7 +73,7 @@ function Trending() {
 
               <div className="flex gap-3 px-1">
                 <img
-                  src={v.owner?.avatar || `https://ui-avatars.com/api/?name=${v.owner?.fullName || v.owner?.username || 'User'}`}
+                  src={secureUrl(v.owner?.avatar || `https://ui-avatars.com/api/?name=${v.owner?.fullName || v.owner?.username || 'User'}`)}
                   alt="Channel avatar"
                   className="w-10 h-10 rounded-full object-cover mt-1 shrink-0 border border-gray-100"
                 />

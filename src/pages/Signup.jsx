@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { secureUrl } from "../utils/secureUrl";
 import { API } from "../api/axios";
 import { useNavigate, Link } from "react-router-dom";
 import { FiLoader, FiCamera, FiImage } from "react-icons/fi";
@@ -114,7 +115,7 @@ function Signup() {
                <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Avatar <span className="text-red-500">*</span></label>
                <label className="flex items-center justify-center w-full h-24 border-2 border-dashed border-red-200 rounded-xl bg-red-50/50 hover:bg-red-50 transition-colors cursor-pointer overflow-hidden">
                  {avatarPreview ? (
-                   <img src={avatarPreview} className="w-16 h-16 rounded-full object-cover" />
+                   <img src={secureUrl(avatarPreview)} className="w-16 h-16 rounded-full object-cover" />
                  ) : (
                    <div className="flex flex-col items-center text-red-500">
                      <FiCamera className="text-xl mb-1" />
@@ -129,7 +130,7 @@ function Signup() {
                <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Cover Image <span className="text-red-500">*</span></label>
                <label className="flex items-center justify-center w-full h-24 border-2 border-dashed border-red-200 rounded-xl bg-red-50/50 hover:bg-red-50 transition-colors cursor-pointer overflow-hidden">
                  {coverPreview ? (
-                   <img src={coverPreview} className="w-full h-full object-cover" />
+                   <img src={secureUrl(coverPreview)} className="w-full h-full object-cover" />
                  ) : (
                    <div className="flex flex-col items-center text-red-500">
                      <FiImage className="text-xl mb-1" />

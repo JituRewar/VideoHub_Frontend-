@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { secureUrl } from "../utils/secureUrl";
 import { API } from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import { FiPlay, FiLoader } from "react-icons/fi";
@@ -63,7 +64,7 @@ function Home() {
       {heroVideo && (
         <div className="relative w-full h-100 md:h-125 rounded-3xl overflow-hidden shadow-2xl mb-12 group cursor-pointer" onClick={() => navigate(`/video/${heroVideo._id}`)}>
           <img
-            src={heroVideo.thumbnail}
+            src={secureUrl(heroVideo.thumbnail)}
             alt={heroVideo.title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
@@ -113,7 +114,7 @@ function Home() {
               >
                 <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-sm bg-gray-200  mb-3">
                   <img
-                    src={v.thumbnail}
+                    src={secureUrl(v.thumbnail)}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     alt={v.title}
                   />
@@ -125,7 +126,7 @@ function Home() {
 
                 <div className="flex gap-3 px-1">
                   <img
-                    src={v.owner?.avatar || `https://ui-avatars.com/api/?name=${v.owner?.fullName || 'User'}`}
+                    src={secureUrl(v.owner?.avatar || `https://ui-avatars.com/api/?name=${v.owner?.fullName || 'User'}`)}
                     alt="Channel avatar"
                     className="w-10 h-10 rounded-full object-cover mt-1 shrink-0 border border-gray-100"
                   />

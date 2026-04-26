@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { secureUrl } from "../utils/secureUrl";
 import { API } from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import { FiUploadCloud, FiImage, FiVideo, FiCheckCircle } from "react-icons/fi";
@@ -150,7 +151,7 @@ function UploadVideo() {
               
               {thumbnailPreview ? (
                 <>
-                  <img src={thumbnailPreview} className="w-full h-full object-cover" alt="Preview" />
+                  <img src={secureUrl(thumbnailPreview)} className="w-full h-full object-cover" alt="Preview" />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span className="text-white font-medium bg-black/60 px-3 py-1 rounded-full text-sm">Change Image</span>
                   </div>

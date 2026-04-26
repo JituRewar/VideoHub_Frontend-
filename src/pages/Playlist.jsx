@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { secureUrl } from "../utils/secureUrl";
 import { API } from "../api/axios";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -112,7 +113,7 @@ function Playlist() {
             
             <div className="relative w-full aspect-square bg-gray-900 rounded-3xl overflow-hidden mb-6 shadow-xl">
               <img
-                src={selected.videos?.[0]?.thumbnail || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564"}
+                src={secureUrl(selected.videos?.[0]?.thumbnail || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564")}
                 className="w-full h-full object-cover opacity-90"
                 alt="Playlist Cover"
               />
@@ -185,7 +186,7 @@ function Playlist() {
 
                   <div className="relative w-32 md:w-40 aspect-video rounded-xl overflow-hidden bg-gray-200 shrink-0">
                     <img
-                      src={v.thumbnail}
+                      src={secureUrl(v.thumbnail)}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       alt={v.title}
                     />

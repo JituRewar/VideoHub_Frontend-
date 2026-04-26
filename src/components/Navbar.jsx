@@ -1,4 +1,5 @@
 import React from "react";
+import { secureUrl } from "../utils/secureUrl";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { API } from "../api/axios";
@@ -74,10 +75,10 @@ function Navbar() {
 
             <div className="relative group cursor-pointer pl-2">
               <img
-                src={
+                src={secureUrl(
                   user?.avatar ||
                   `https://ui-avatars.com/api/?name=${user?.fullName || 'User'}&background=FF0000&color=fff`
-                }
+                )}
                 alt="profile"
                 className="w-10 h-10 rounded-full object-cover hover:scale-105 border-2 border-transparent group-hover:border-red-200 transition-all duration-300"
                 onClick={() => {
@@ -91,7 +92,7 @@ function Navbar() {
               <div className="absolute right-0 top-full mt-2 w-48 bg-white border border-gray-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all pointer-events-none group-hover:pointer-events-auto">
                 <div className="p-2">
                   <div className="px-4 py-3 border-b border-gray-50 flex items-center gap-3">
-                    <img src={user?.avatar || `https://ui-avatars.com/api/?name=${user?.fullName || 'User'}`} className="w-8 h-8 rounded-full" />
+                    <img src={secureUrl(user?.avatar || `https://ui-avatars.com/api/?name=${user?.fullName || 'User'}`)} className="w-8 h-8 rounded-full" />
                     <div>
                       <div className="text-sm font-semibold text-gray-800">{user?.fullName}</div>
                       <div className="text-xs text-gray-500">@{user?.username}</div>
