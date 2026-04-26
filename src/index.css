@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/* Global styles */
+body {
+  background-color: #f3f4f6; /* gray-100 */
+  color: #111827; /* gray-900 */
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Auth background */
+.auth-bg {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+* {
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+img:hover {
+  opacity: 0.9;
+}
+/* @layer base {
+  html.dark {
+    background-color: #000;
+  }
+} */
